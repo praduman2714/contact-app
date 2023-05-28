@@ -18,6 +18,17 @@ function Home() {
         setIsLoading(false);
     }
 
+    // This is delete function whill will delete the contactList with given id
+    const deleteContact = (id) => {
+        const index = contactList.findIndex((contact) => contact.id === id);
+        if (index !== -1) {
+          let newContactList = [...contactList];
+          newContactList.splice(index, 1);
+          setContactList(newContactList);
+        }
+    };
+      
+
     useEffect(()=>{
         fetchContactList();
     }, []);
@@ -27,6 +38,12 @@ function Home() {
     }
     return (
         <>
+            <div className={Style.addContact}>
+                
+                <Link to = 'add-contact'>
+                    <button>Add To Contact</button>
+                </Link>
+            </div>
             <div className={Style.contactTable}>
                 <table className="table">
                     <thead>
@@ -41,7 +58,7 @@ function Home() {
                     <tbody>
                         {contactList.map((contact, index) => (
                             <tr key={index}>
-                                <td>{contact.id}</td>
+                                <td>{index+1}</td>
                                 <td>{contact.name}</td>
                                 <td>{contact.email}</td>
                                 <td>{contact.phone}</td>
@@ -49,9 +66,11 @@ function Home() {
                                     <Link to= 'edit-contact'>
                                         <button className={Style.editButton}>Edit</button>
                                     </Link>
-                                    <Link to='add-contact' >
-                                        <button className={Style.deleteButton}>Delete</button>
-                                    </Link>
+                                    
+                                    <button onClick={()=>deleteContact(contact.id)} className={Style.deleteButton}>
+                                        Delete
+                                    </button>
+                                    
                                 </td>
                             </tr>
                         ))}
