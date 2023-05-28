@@ -8,6 +8,11 @@ import AddToContact from './Pages/AddToContact/AddToContact';
 import Edit from './Pages/EditContact/EditContact';
 // Importing stateManagement Library
 import CustomeContext from './context';
+
+// Importing the Toastify to disply the notification in the react-app
+import { ToastContainer } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
+
 // Importing css file
 import './App.css';
 
@@ -26,6 +31,7 @@ function App() {
 
   return (
     <CustomeContext>
+      <ToastContainer />
       <div className="App">
         {/* Assigning Routes */}
         <RouterProvider router={router} />

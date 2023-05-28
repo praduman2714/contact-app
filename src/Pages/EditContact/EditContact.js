@@ -7,6 +7,9 @@ import { Link } from 'react-router-dom';
 // Importing some of the Styling
 import Style from './EditContact.module.css';
 
+// imporring Toast for notification
+import {toast} from 'react-toastify';
+
 function Edit() {
     // Importing Values from the contact API
     const { contactList, setContactList, nameRef, emailRef, numberRef, handleClear } = useValue();
@@ -25,7 +28,7 @@ function Edit() {
         const phone = numberRef.current.value;
         // return the default value
         if (name === currentContact.name && email === currentContact.email && phone === currentContact.phone) {
-            return;
+            return toast.error('Please changes the values !');
         }
         // making new array so that we can make the changes
         const updatedContact = {
@@ -41,6 +44,7 @@ function Edit() {
             }
             return contact;
         });
+        toast.success("Contact Updated !");
         // Navagating to the home page, after the task is done
         navigate('/');
         // Setting the contact list

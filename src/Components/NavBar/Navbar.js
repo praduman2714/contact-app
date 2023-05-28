@@ -4,6 +4,7 @@ import { Outlet } from "react-router-dom";
 // Importing Style for the CSS purpose
 import Style from './Navbar.module.css';
 
+// Retruning the UI
 function NavBar() {
     return (
         <>

@@ -1,5 +1,9 @@
 // Importing dependencies from the react
 import { createContext, useContext, useState , useEffect , useRef } from "react";
+
+// Importing toast to disply the notification
+import {toast} from 'react-toastify';
+
 // makeing the contextAPI , 
 const contactApi = createContext();
 // exporting the value from this file, 
@@ -34,6 +38,8 @@ function CustomeContext({children}){
         if (index !== -1) {
           let newContactList = [...contactList];
           newContactList.splice(index, 1);
+        //   Displyed the toast messages
+          toast.success("Contact Deleted Successfully !");
           setContactList(newContactList);
         }
     };
