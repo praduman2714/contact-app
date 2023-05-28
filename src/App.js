@@ -20,7 +20,7 @@ function App() {
      {path : '/' , element : <NavBar /> , children : [
       {path : '/' , element : <Home />},
       {path : 'add-contact' , element : <AddToContact /> },
-      {path : 'edit-contact' , element : <Edit />}
+      {path : 'edit-contact/:id' , element : <Edit />}
      ]}
   ]);
 
