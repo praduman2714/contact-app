@@ -6,8 +6,12 @@ import Home from './Components/Home/Home';
 // Importing pages
 import AddToContact from './Pages/AddToContact/AddToContact';
 import Edit from './Pages/EditContact/EditContact';
+// Importing stateManagement Library
+import CustomeContext from './context';
 // Importing css file
 import './App.css';
+
+
 
 function App() {
 
@@ -21,10 +25,13 @@ function App() {
   ]);
 
   return (
-    <div className="App">
-      {/* Assigning Routes */}
-      <RouterProvider router={router} />
-    </div>
+    <CustomeContext>
+      <div className="App">
+        {/* Assigning Routes */}
+        <RouterProvider router={router} />
+      
+      </div>
+    </CustomeContext>
   );
 }
 

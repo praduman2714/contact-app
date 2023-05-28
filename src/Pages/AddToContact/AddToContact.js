@@ -1,11 +1,18 @@
 // Importing Styling
 import { useRef } from 'react';
 import Style from './AddToContact.module.css'
+import { useValue } from '../../context';
+import { useNavigate } from 'react-router-dom';
 
 function AddToContact() {
+
+    const {contactList, setContactList} = useValue();
+
     const nameRef = useRef();
     const emailRef = useRef();
     const numberRef = useRef();
+
+    const navigate = useNavigate();
 
     const handleClear = ()=>{
         nameRef.current.value = "";
@@ -15,7 +22,26 @@ function AddToContact() {
 
     const handleSubmit = (e)=>{
         e.preventDefault();
-        console.log(nameRef.current.value);
+        const name = nameRef.current.value;
+        const email = emailRef.current.value;
+        const number = numberRef.current.value;
+
+        const checkNumber = contactList.find(contact => contact.number === parseInt(number) && number)
+
+        if(checkNumber){
+            return ;
+        }
+        
+        const newContactList = [...contactList];
+        newContactList.push({
+            id: contactList[contactList.length - 1].id + 1,
+            name ,
+            email ,
+            phone : number
+        });
+        setContactList(newContactList);
+        navigate('/');
+        // console.log(nameRef.current.value);
         handleClear();
 
     }

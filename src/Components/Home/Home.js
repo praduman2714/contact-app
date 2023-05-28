@@ -1,37 +1,15 @@
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 
 // Importing Style
 import Style from './Home.module.css';
 import { Link } from "react-router-dom";
 import Loader from "../Loader/Loader";
+import { useValue } from "../../context";
+
 
 function Home() {
-    const [contactList, setContactList] = useState([]);
-    const [isLoading, setIsLoading] = useState(false);
-
-    const fetchContactList = async() =>{
-        setIsLoading(true);
-        let data = await fetch('https://jsonplaceholder.typicode.com/users/');
-        let contact = await data.json();
-        // console.log(contact);
-        setContactList(contact);
-        setIsLoading(false);
-    }
-
-    // This is delete function whill will delete the contactList with given id
-    const deleteContact = (id) => {
-        const index = contactList.findIndex((contact) => contact.id === id);
-        if (index !== -1) {
-          let newContactList = [...contactList];
-          newContactList.splice(index, 1);
-          setContactList(newContactList);
-        }
-    };
-      
-
-    useEffect(()=>{
-        fetchContactList();
-    }, []);
+    
+    const {contactList, isLoading , deleteContact} = useValue();
 
     if(isLoading){
         return <Loader />
