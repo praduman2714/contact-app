@@ -19,13 +19,13 @@ Contact App is a web application that allows you to manage your contacts. You ca
 ## Project Structure
 The project structure follows a standard React application structure:
 
- -public/: Contains the HTML template and other static assets.
- -src/: Contains the React components, CSS styles, and application logic.
- -components/: Contains reusable components used in the application.
- -context/: Contains the Context API implementation for managing contact data.
- -pages/: Contains the main pages of the application.
- -App.js: The root component of the application.
- -index.js: The entry point of the application.
+   - public/: Contains the HTML template and other static assets.
+   - src/: Contains the React components, CSS styles, and application logic.
+   - components/: Contains reusable components used in the application.
+   - context/: Contains the Context API implementation for managing contact data.
+   - pages/: Contains the main pages of the application.
+   - App.js: The root component of the application.
+   - index.js: The entry point of the application.
 
 # Getting Started with Create React App
 
